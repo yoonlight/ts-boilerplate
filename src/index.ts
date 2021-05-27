@@ -1,11 +1,21 @@
 import Koa from 'koa';
-const app = new Koa();
 
-app.use(async ctx => {
-  ctx.body = 'Hello World';
-});
+class App {
+  public port = process.env.PORT
+  public app = new Koa()
+  constructor() {
+    this.app.use(async ctx => {
+      ctx.body = 'Hello World';
+    });
+  }
 
-app.listen(process.env.PORT);
-let message: string = 'Hello World';
-console.log(message);
-console.log(process.env.PORT);
+  start() {
+    this.app.listen(this.port, () => {
+      console.log(`TypeScript Koa App Listening ${this.port}`);
+    });
+  }
+}
+
+const server = new App();
+
+server.start()
