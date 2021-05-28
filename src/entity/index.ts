@@ -1,6 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
-@Entity()
 export class Base {
 
   @PrimaryGeneratedColumn()
@@ -18,6 +17,6 @@ export class Base {
   @Column()
   createdDate: Date;
   @Column()
-  updatedDate: number;
+  updatedDate: Date;
 
 }

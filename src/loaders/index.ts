@@ -3,14 +3,20 @@ import { config } from '../config';
 
 const mysql = config.mysql
 class Orm {
-  connection: Connection
+  private _connection: Connection;
+  public get connection(): Connection {
+    return this._connection;
+  }
+  public set connection(value: Connection) {
+    this._connection = value;
+  }
   constructor() {
 
   }
 
   async connect() {
     try {
-      this.connection = await createConnection({
+      this._connection = await createConnection({
         type: "mysql",
         host: mysql.host,
         port: mysql.port,
@@ -18,7 +24,7 @@ class Orm {
         password: mysql.pass,
         database: mysql.database,
         entities: [
-          "src/entity/**/*.ts"          
+          "src/entity/**/*.ts"
         ],
         // synchronize: true,
         logging: false
