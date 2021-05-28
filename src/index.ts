@@ -1,4 +1,6 @@
+import "reflect-metadata";
 import Koa from 'koa';
+import Orm from './loaders';
 
 class App {
   public port = process.env.PORT
@@ -17,5 +19,7 @@ class App {
 }
 
 const server = new App();
-
+const orm = new Orm();
 server.start()
+
+orm.connect()
