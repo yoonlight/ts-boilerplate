@@ -3,8 +3,8 @@ import { config } from '../config';
 
 const mysql = config.mysql
 class Orm {
+  connection: Connection
   constructor() {
-    connection: Connection
 
   }
 
